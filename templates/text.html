@@ -1,0 +1,80 @@
+
+<!--
+
+<html>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <title>OCR</title>
+    <body class='grid-container'>
+
+    <div>
+    <p style="font-size: 48px;">Result text:</p>
+    {{text}}
+    </div>
+    <div>
+        <form action="{{url_for('index')}}">
+            <input type="submit" class="myButton" value="Return"/>
+          </form>
+    </div>
+    </body>
+</html>
+    
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text to PDF</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
+        #textArea {
+            width: 130%;
+            height: 700px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+        #makePdfButton {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 40%;
+            font-size: 16px;
+        }
+        #makePdfButton:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <p style="font-size: 24px;">Result text:</p>
+    <div>
+        <!-- Display the text content received from the server -->
+        <textarea id="textArea" name="text" rows="10" cols="50">{{text | safe}}</textarea>
+    </div>
+    <div>
+        <!-- Button to make PDF -->
+        <form action="/make_pdf" method="post">
+            <input type="submit" id="makePdfButton" value="Make PDF"/>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
